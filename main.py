@@ -27,10 +27,11 @@ def readFile(PFilename: str, PTimestamps: list[str]) -> None:
 def displayTimestamps(Timestamps):
     print("Electricity usage:")
     for Timestamp in Timestamps:
-        total = Timestamp.consumption * Timestamp.price
+        total = round(Timestamp.consumption * Timestamp.price, 2)
         print(" - {} {}:00, price {:.2f}, consumption {:.2f} kWh, total {:.2f} €".format(Timestamp.weekday, Timestamp.hour, Timestamp.price, Timestamp.consumption, total ))
 
 def main():
+    print("Program starting.")
     filename = input("Enter filename: ")
     PTimestamps = []
     readFile(filename, PTimestamps)
