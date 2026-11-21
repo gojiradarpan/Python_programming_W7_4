@@ -6,7 +6,7 @@ class TIMESTAMP:
     consumption = 0.0
     price = 0.0
 
-def readFile(PFilename: str, PTimestamps: list[TIMESTAMP]) -> None:
+def readTimestamps(PFilename: str, PTimestamps: list[TIMESTAMP]) -> None:
     print('Reading file "{}".'.format(PFilename))
     with open(PFilename, "r", encoding="UTF-8") as Filehandle:
         Filehandle.readline()
@@ -34,8 +34,9 @@ def main():
     print("Program starting.")
     filename = input("Insert filename: ")
     PTimestamps = []
-    readFile(filename, PTimestamps)
+    readTimestamps(filename, PTimestamps)
     displayTimestamps(PTimestamps)
     print("Program ending.")
 
-main()
+if __name__ == "__main__":
+    main()
