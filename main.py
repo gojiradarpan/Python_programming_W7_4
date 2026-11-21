@@ -6,19 +6,19 @@ class TIMESTAMP:
     consumption = 0.0
     price = 0.0
 
-def readFile(PFilename: str, PTimestamps: list[str]) -> None:
+def readFile(PFilename: str, PTimestamps: list[TIMESTAMP]) -> None:
     print('Reading file "{}".'.format(PFilename))
     with open(PFilename, "r", encoding="UTF-8") as Filehandle:
         Filehandle.readline()
         for line in Filehandle:
-            # line.strip("\n")
+            line = line.strip("\n")
             if line == "":
                 continue
-            Row = line.strip("\n").split(DELIMITER)
+            Row = line.split(DELIMITER)
             Timestamp = TIMESTAMP()
             Timestamp.weekday = Row[0]
             Timestamp.hour = Row[1]
-            Timestamp.consumption = int(Row[2])
+            Timestamp.consumption = float(Row[2])
             Timestamp.price = float(Row[3])
             PTimestamps.append(Timestamp)
             Row.clear()
@@ -32,7 +32,7 @@ def displayTimestamps(Timestamps):
 
 def main():
     print("Program starting.")
-    filename = input("Enter filename: ")
+    filename = input("Insert filename: ")
     PTimestamps = []
     readFile(filename, PTimestamps)
     displayTimestamps(PTimestamps)
